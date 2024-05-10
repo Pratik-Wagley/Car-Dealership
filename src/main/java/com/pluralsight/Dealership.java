@@ -72,11 +72,12 @@ public class Dealership {
         return null;
     }
 
-    public Vehicle getAllVehicle(ArrayList<Vehicle> vehicles) {
+    public ArrayList<Vehicle> getAllVehicle() {
+        ArrayList<Vehicle> allVehicles = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-
+            allVehicles.add(vehicle);
         }
-        return null;
+        return allVehicles;
     }
 
     public void addVehicle(Vehicle vehicle) {
