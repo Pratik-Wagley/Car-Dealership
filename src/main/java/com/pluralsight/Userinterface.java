@@ -1,2 +1,4 @@
-package com.pluralsight;public class Userinterface {
+package com.pluralsight;
+
+public class Userinterface {
 }

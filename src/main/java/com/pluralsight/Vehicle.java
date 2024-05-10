@@ -1,2 +1,4 @@
-package com.pluralsight;public class Vehicle {
+package com.pluralsight;
+
+public class Vehicle {
 }
