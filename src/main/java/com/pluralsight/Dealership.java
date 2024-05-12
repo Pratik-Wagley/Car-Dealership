@@ -76,8 +76,9 @@ public class Dealership {
         ArrayList<Vehicle> allVehicles = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
             allVehicles.add(vehicle);
+            return allVehicles;
         }
-        return allVehicles;
+        return null;
     }
 
     public void addVehicle(Vehicle vehicle) {

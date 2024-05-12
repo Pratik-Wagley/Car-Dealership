@@ -9,7 +9,7 @@ public class DealershipFileManager {
     public static String FILE_NAME = "dealership.csv";
     public static Dealership dealership;
 
-    public static void getDealerShip(){
+    public static Dealership getDealerShip(){
         try {
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             String line;
@@ -36,14 +36,13 @@ public class DealershipFileManager {
                    // System.out.println(line);
                 }
             }
-
-
+            br.close();
         } catch (FileNotFoundException e) {
             System.err.println("Error");
         } catch (IOException e) {
             System.out.println("Could not read line");
         }
-
+        return dealership;
     }
     public void saveDealerShip(Dealership dealership){
 
