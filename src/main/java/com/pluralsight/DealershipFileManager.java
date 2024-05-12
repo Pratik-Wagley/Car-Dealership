@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class DealershipFileManager {
     public static String FILE_NAME = "dealership.csv";
-    public static Dealership dealership1;
+    public static Dealership dealership;
 
     public static void getDealerShip(){
         try {
@@ -20,7 +20,7 @@ public class DealershipFileManager {
                     String name = parts[0];
                     String address = parts[1];
                     String phone = parts[2];
-                    dealership1 = new Dealership(name, address, phone);
+                    dealership = new Dealership(name, address, phone);
                    // System.out.println(line);
                 }
                 if (parts.length == 8) {
@@ -32,10 +32,9 @@ public class DealershipFileManager {
                     String color = parts[5];
                     int odometer = Integer.parseInt(parts[6]);
                     double price = Double.parseDouble(parts[7]);
-                   dealership1.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+                   dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
                    // System.out.println(line);
                 }
-
             }
 
 
@@ -47,6 +46,7 @@ public class DealershipFileManager {
 
     }
     public void saveDealerShip(Dealership dealership){
+
 
     }
 
