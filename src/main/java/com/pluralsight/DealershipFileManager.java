@@ -9,7 +9,7 @@ public class DealershipFileManager {
     public static String FILE_NAME = "dealership.csv";
     public static Dealership dealership;
 
-    public static Dealership getDealerShip(){
+    public Dealership getDealerShip(){
         try {
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             String line;

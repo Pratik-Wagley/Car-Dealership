@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserInterface {
     private Dealership dealership;
@@ -17,57 +18,61 @@ public class UserInterface {
         this.dealership = dealership;
     }
 
-    private void init(Dealership dealership) {
-       this.dealership = DealershipFileManager.getDealerShip();
+    private void init() {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+       this.dealership = dealershipFileManager.getDealerShip();
+
 
     }
-    private Vehicle displayVehicles(Dealership dealership) {
-        for (Vehicle vehicle : dealership.getVehicles()) {
-            return vehicle;
+    private void displayVehicles(List<Vehicle> vehicles) {
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle);
         }
-        return null;
-    }
-
-    public static void display() {
-
 
     }
 
+    public void display() {
+        init();
 
-    public static void processGetByPriceRequest() {
 
-    }
-
-    public static void processGetByMakeModelRequest() {
 
     }
 
-    public static void processGetByYearRequest() {
+
+    public void processGetByPriceRequest() {
 
     }
 
-    public static void processGetByColorRequest() {
+    public void processGetByMakeModelRequest() {
 
     }
 
-    public static void processGetByMileageRequest() {
+    public void processGetByYearRequest() {
 
     }
 
-    public static void processGetByVehicleTypeRequest() {
+    public void processGetByColorRequest() {
 
     }
 
-    public static Vehicle processGetAllRequest(Dealership dealership) {
-       ArrayList<Vehicle> all = dealership.getAllVehicle();
-       //reminder: working on this currently
-    }
-
-    public static void processAddVehicleRequest() {
+    public void processGetByMileageRequest() {
 
     }
 
-    public static void processRemoveVehicleRequest() {
+    public void processGetByVehicleTypeRequest() {
+
+    }
+
+    public void processGetAllRequest(Dealership dealership) {
+       List<Vehicle> allVehicles = dealership.getAllVehicle();
+       displayVehicles(allVehicles);
+    }
+
+    public void processAddVehicleRequest() {
+
+    }
+
+    public void processRemoveVehicleRequest() {
 
     }
 
