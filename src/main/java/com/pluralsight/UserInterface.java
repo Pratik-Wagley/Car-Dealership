@@ -1,10 +1,15 @@
 package com.pluralsight;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
+    public final String FILE_NAME = "dealership.csv";
+
     private Dealership dealership;
 
    // public UserInterface(Dealership dealership) {
@@ -74,7 +79,7 @@ public class UserInterface {
                     processGetAllRequest(getDealership());
                     break;
                 case "A":
-                    processAddVehicleRequest();
+                    processAddVehicleRequest(scanner);
                     break;
                 case "R":
                     processRemoveVehicleRequest();
@@ -155,11 +160,40 @@ public class UserInterface {
         displayVehicles(allVehicles);
     }
 
-    public void processAddVehicleRequest() {
+    public void processAddVehicleRequest(Scanner scanner) {
+        System.out.println("Enter a unique VIN:");
+         int vin = scanner.nextInt();
+        System.out.println("Enter Year of the vehicle:");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter the Make:");
+        String make = scanner.nextLine();
+        System.out.println("Enter the Model:");
+        String model = scanner.nextLine();
+        System.out.println("Enter the Vehicle Type:");
+        String vehicleType = scanner.nextLine();
+        System.out.println("Enter Color:");
+        String color = scanner.nextLine();
+        System.out.println("Enter Odometer:");
+        int odometer = scanner.nextInt();
+        System.out.println("Enter Price:");
+        double price = scanner.nextDouble();
+        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true));
+            bw.write(vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + odometer + "|" + price);
+            bw.newLine();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+
+        }
 
     }
 
     public void processRemoveVehicleRequest() {
+        System.out.println("Enter the VIN of the vehicle you want to remove:");
+
 
     }
 

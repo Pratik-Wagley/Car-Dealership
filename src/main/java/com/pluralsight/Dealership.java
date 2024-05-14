@@ -125,6 +125,7 @@ public class Dealership {
 
     }
     public void removeVehicle(Vehicle vehicle) {
+        vehicles.remove(vehicle);
 
     }
 
