@@ -6,8 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class DealershipFileManager {
-    public static String FILE_NAME = "dealership.csv";
-    public static Dealership dealership;
+    public final String FILE_NAME = "dealership.csv";
+    public Dealership dealership;
 
     public Dealership getDealerShip(){
         try {
@@ -20,10 +20,10 @@ public class DealershipFileManager {
                     String name = parts[0];
                     String address = parts[1];
                     String phone = parts[2];
-                    dealership = new Dealership(name, address, phone);
-                   // System.out.println(line);
+                   dealership = new Dealership(name, address, phone);
+                    //System.out.println(line);
                 }
-                if (parts.length == 8) {
+               else if (parts.length == 8) {
                     int vin = Integer.parseInt(parts[0]);
                     int year = Integer.parseInt(parts[1]);
                     String make = parts[2];
@@ -33,11 +33,13 @@ public class DealershipFileManager {
                     int odometer = Integer.parseInt(parts[6]);
                     double price = Double.parseDouble(parts[7]);
                    dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
-                   // System.out.println(line);
+                    //System.out.println(line);
+                } else {
+                    System.out.println("Invalid data format: " + line);
                 }
             }
             br.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | NumberFormatException e) {
             System.err.println("Error");
         } catch (IOException e) {
             System.out.println("Could not read line");
