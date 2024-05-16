@@ -178,21 +178,23 @@ public class UserInterface {
         int odometer = scanner.nextInt();
         System.out.println("Enter Price:");
         double price = scanner.nextDouble();
-        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true));
-            bw.write(vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + odometer + "|" + price);
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Error");
 
-        }
+        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.saveDealerShip(dealership);
 
     }
 
-    public void processRemoveVehicleRequest() {
+    public void processRemoveVehicleRequest(Scanner scanner) {
         System.out.println("Enter the VIN of the vehicle you want to remove:");
+        int vin = scanner.nextInt();
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.getDealerShip().removeVehicle(dealership.getAllVehicle(), vin);
+
+
+
+
+
 
 
     }

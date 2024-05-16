@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,7 +114,7 @@ public class Dealership {
     }
 
     public List<Vehicle> getAllVehicle() {
-       List<Vehicle> allVehicles = new ArrayList<>();
+        List<Vehicle> allVehicles = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
             allVehicles.add(vehicle);
         }
@@ -124,8 +125,14 @@ public class Dealership {
         vehicles.add(vehicle);
 
     }
-    public void removeVehicle(Vehicle vehicle) {
-        vehicles.remove(vehicle);
+
+    public void removeVehicle(Vehicle vehicle, int vin) {
+        for (Vehicle vehicle1 : vehicles) {
+            if (vehicle1.getVin() == vin) {
+                vehicles.remove(vehicle1);
+            }
+        }
+
 
     }
 
