@@ -82,7 +82,7 @@ public class UserInterface {
                     processAddVehicleRequest(scanner);
                     break;
                 case "R":
-                    processRemoveVehicleRequest();
+                    processRemoveVehicleRequest(scanner);
                     break;
                 case "X":
                     System.out.println("Goodbye!");
@@ -105,6 +105,10 @@ public class UserInterface {
         int min = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the maximum vehicle price");
         int max = Integer.parseInt(scanner.nextLine());
+       List<Vehicle> vehiclesList = dealership.getVehiclesByPrice(min, max);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
         System.out.println("These are the vehicles within your range: ");
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
@@ -114,6 +118,10 @@ public class UserInterface {
         String make = scanner.nextLine();
         System.out.println("Enter the model of the vehicle");
         String model = scanner.nextLine();
+        List<Vehicle> vehiclesList = dealership.getVehiclesByMakeModel(make, model);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
         System.out.println("These are the vehicles with the make and model ");
         displayVehicles(dealership.getVehiclesByMakeModel(make, model));
 
@@ -124,14 +132,21 @@ public class UserInterface {
         int min = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the maximum year: ");
         int max = Integer.parseInt(scanner.nextLine());
+        List<Vehicle> vehiclesList = dealership.getVehiclesByYear(min, max);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
         System.out.println("These are the vehicles within your range: ");
         displayVehicles(dealership.getVehiclesByYear(min, max));
-
     }
 
     public void processGetByColorRequest(Scanner scanner) {
         System.out.println("Enter the color of the vehicles");
         String color = scanner.nextLine();
+        List<Vehicle> vehiclesList = dealership.getVehiclesByColor(color);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
         System.out.println("These are the vehicles with that color: ");
         displayVehicles(dealership.getVehiclesByColor(color));
     }
@@ -143,12 +158,23 @@ public class UserInterface {
         int max = Integer.parseInt(scanner.nextLine());
         System.out.println("These are the vehicles within your range: ");
         displayVehicles(dealership.getVehiclesByMileage(min, max));
+        List<Vehicle> vehiclesList = dealership.getVehiclesByPrice(min, max);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
+        System.out.println("These are the vehicles within your range: ");
+        displayVehicles(dealership.getVehiclesByPrice(min, max));
 
     }
 
     public void processGetByVehicleTypeRequest(Scanner scanner) {
         System.out.println("Enter the type of the vehicles");
         String type = scanner.nextLine();
+        List<Vehicle> vehiclesList = dealership.getVehiclesByType(type);
+        if (vehiclesList.isEmpty()) {
+            System.out.println("No match found");
+        }
+
         System.out.println("These are the vehicles of that type: ");
         displayVehicles(dealership.getVehiclesByType(type));
 
@@ -189,7 +215,7 @@ public class UserInterface {
         System.out.println("Enter the VIN of the vehicle you want to remove:");
         int vin = scanner.nextInt();
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        dealershipFileManager.getDealerShip().removeVehicle(dealership.getAllVehicle(), vin);
+       // dealershipFileManager.getDealerShip().removeVehicle(dealership.getAllVehicle(), vin);
 
 
 
